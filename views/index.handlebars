@@ -26,13 +26,17 @@
     <h1 class="display-4">Movie Mood</h1>
     <p class="lead">I'm feeling....</p>
 
-    <button type="button" class="btn btn-info" id="button">Funny</button>
+    {{#each moods}}
+    <button type="button" class="btn btn-info" id="button">{{this.mood}}</button>
+    {{/each}}
+
+
+    {{!-- <button type="button" class="btn btn-info" id="button">Funny</button>
     <button type="button" class="btn btn-info" id="button">Romantic</button>
     <button type="button" class="btn btn-info" id="button">Uplifting</button>
     <button type="button" class="btn btn-info" id="button">Dark</button>
-    <button type="button" class="btn btn-info" id="button">Info</button>
+    <button type="button" class="btn btn-info" id="button">Info</button> --}}
   </div>
-
 </div>
 
 <div class="container mt-5">

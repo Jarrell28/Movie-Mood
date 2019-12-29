@@ -4,10 +4,10 @@ var axios = require("axios");
 module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+    db.Mood.findAll({}).then(function (dbMoods) {
       res.render("index", {
         msg: "Welcome!",
-        examples: dbExamples
+        moods: dbMoods
       });
     });
   });

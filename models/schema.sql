@@ -1,6 +1,16 @@
-DROP DATABASE IF EXISTS exampledb;
-CREATE DATABASE exampledb;
+DROP DATABASE IF EXISTS project2;
+CREATE DATABASE project2;
 
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
- 
+use project2;
+
+CREATE TABLE moods
+(
+    id INT
+    AUTO_INCREMENT NOT NULL,
+    mood VARCHAR
+    (255) NOT NULL,
+    genre_id VARCHAR
+    (255) NOT NULL,
+    PRIMARY KEY
+    (id)
+);
