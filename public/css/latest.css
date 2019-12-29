@@ -1,0 +1,21 @@
+.jumbotron {
+    height: 100%;
+    width: 100%;
+    margin-bottom: -5%;
+}
+.navbar {
+    margin-top: -5%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+#one {
+    color: brown;
+}
+.card {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+    padding-right: 2%;
+    margin-right: 5%;
+    margin-left: 2%;
+}

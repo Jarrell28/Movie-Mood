@@ -9,11 +9,16 @@
     color: black;
     border-top: 0%;
 }
+.navbar {
+    margin-top: -2%;
+    margin-bottom: 5%;
+    text-align: center;
+}
 .lead{
     text-align: center;
 }
 #button{
     border-radius: 24px;
     margin-left: 10%;
-    margin-top: 10%;
+    margin-top: 8%;
 }
