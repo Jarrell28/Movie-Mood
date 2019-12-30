@@ -1,5 +1,6 @@
 .jumbotron{
-    height: 100vh;
+    min-height: calc(100vh - 56px);
+    margin-bottom: 0;
 }
 .display-4{
     text-align: center;
@@ -10,8 +11,6 @@
     border-top: 0%;
 }
 .navbar {
-    margin-top: -2%;
-    margin-bottom: 5%;
     text-align: center;
 }
 .lead{
@@ -21,4 +20,19 @@
     border-radius: 24px;
     margin-left: 10%;
     margin-top: 8%;
+}
+
+#one {
+    color: brown;
+}
+
+.card {
+    /* float: left;
+    width: 33.33%; */
+    /* margin-right: 5%;
+    margin-left: 2%; */
+}
+
+.card-body {
+    padding: 25px;
 }
