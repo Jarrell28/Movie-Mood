@@ -35,8 +35,20 @@ module.exports = function (app) {
           //let results = response.data.map(movie => movie.)
           res.json(response.data)
         })
-      // find  in the api movies with genre = the info insee onf the genre_id
+    });
 
+  });
+
+  // find  in the api movies with genre = the info insee onf the genre_id
+
+  // Load example page and pass in an example by id
+  app.get("/example/:id", function (req, res) {
+    db.Example.findOne({ where: { id: req.params.id } }).then(function (
+      dbExample
+    ) {
+      res.render("example", {
+        example: dbExample
+      });
     });
   });
 
