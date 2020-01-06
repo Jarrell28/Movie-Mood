@@ -12,6 +12,35 @@ module.exports = function (app) {
     });
   });
 
+  //Load example page and pass in an example by id
+  app.get("/mood/:mood", function (req, res) {
+    let inputMood = req.params.mood
+    // eliminate later
+    inputMood = "funny"
+    db.Mood.findOne({ where: { mood: inputMood } }).then(function (
+      data
+    ) {
+      //console.log(data)
+      var genre = data.genre_id.split(",")
+      let genreArray = genre.map(id => parseInt(id))
+      //console.log("genreArray:", genreArray)
+      let query = "https://api.themoviedb.org/3/discover/movie?api_key=" + process.env.APIKEY + "&with_genres=" + genreArray[0]
+      //console.log(query)
+      axios.get(query)
+        .then(function (response) {
+          //console.log("MOVIES")
+          console.log(response.data);
+
+          // verify that the movie contain at least all the genre coming for the genreArray
+          //let results = response.data.map(movie => movie.)
+          res.json(response.data)
+        })
+    });
+
+  });
+
+  // find  in the api movies with genre = the info insee onf the genre_id
+
   // Load example page and pass in an example by id
   app.get("/example/:id", function (req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function (
@@ -72,7 +101,7 @@ module.exports = function (app) {
       })
       .then(function (response) {
 
-        // console.log(response.data);
+        console.log(response.data);
         res.render("genre", {
           genres: response.data.genres
         });
