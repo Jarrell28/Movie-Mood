@@ -36,3 +36,21 @@
 .card-body {
     padding: 25px;
 }
+
+.popular {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.popular .card {
+    width: 30%;
+    margin: 30px 15px;
+}
+
+.popular .card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}

@@ -1,5 +1,6 @@
 require("dotenv").config();
 var express = require("express");
+var session = require("express-session");
 var exphbs = require("express-handlebars");
 var path = require("path");
 
@@ -13,6 +14,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({ secret: 'session_password' }));
+var ssn;
 
 // Handlebars
 app.engine(

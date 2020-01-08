@@ -42,7 +42,7 @@ module.exports = function (app) {
         api_key: process.env.APIKEY
       }
     }).then(function (response) {
-      res.json(respone.data)
+      res.json(response.data)
     })
   })
 
