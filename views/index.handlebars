@@ -5,9 +5,12 @@
     <p class="lead">I'm feeling....</p>
 
     {{#each moods}}
-    <button type="button" class="btn btn-info" id="button">{{this.mood}}</button>
+    <button type="button" class="btn btn-info mood-btn" id="button">{{this.mood}}</button>
     {{/each}}
 
+    <div class="popular">
+
+    </div>
 
     {{!-- <button type="button" class="btn btn-info" id="button">Funny</button>
     <button type="button" class="btn btn-info" id="button">Romantic</button>
