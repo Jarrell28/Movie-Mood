@@ -1,4 +1,3 @@
-// Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
@@ -99,10 +98,37 @@ $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
 
-$.ajax({
-  method: "get",
-  url: "https://api.themoviedb.org/3/movie/popular?api_key=2df876faefee6d03033b7c47ead70461&language=en-US",
-  success: function (data) {
-    console.log(data);
-  }
+//Function to handle the movie search
+function handleSearch(e) {
+  e.preventDefault();
+
+  var search = $("#search-val").val();
+
+  $.ajax({
+    method: "POST",
+    url: "/search/movie",
+    data: { search: search },
+    success: function (data) {
+      //Display results in html
+      console.log(data);
+    }
+  });
+}
+//Movie Search Form Event Listener
+$("#search-form").on("submit", handleSearch);
+
+
+//Gets Movie Data when clicking movie poster from backend
+$(".movie").on("click", function () {
+
+  var id = $(this).data("id");
+
+  $.ajax({
+    method: "GET",
+    url: "/movie" + id,
+    data: { id: id },
+    success: function (data) {
+      console.log(data);
+    }
+  })
 });

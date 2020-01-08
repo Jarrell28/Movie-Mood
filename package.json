@@ -16,15 +16,19 @@
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "jquery": "^3.4.1",
+<<<<<<< HEAD
     "mysql": "^2.17.1",
     "mysql2": "^1.6.5",
     "sequelize": "^5.8.6"
+=======
+    "mysql2": "^1.7.0",
+    "sequelize": "^5.21.3"
+>>>>>>> dc816282d0d99f964dfc5d99b94145249c3c7544
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "cross-env": "^5.2.0",
-    "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
     "mocha": "^6.1.4",
