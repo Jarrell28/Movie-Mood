@@ -12,16 +12,20 @@ module.exports = function (app) {
     });
   });
 
+
+
+
+
+
   //Load example page and pass in an example by id
   app.get("/mood/:mood", function (req, res) {
-    let inputMood = req.params.mood
+    let inputMood = req.params.mood;
     // eliminate later
-    inputMood = "funny"
     db.Mood.findOne({ where: { mood: inputMood } }).then(function (
       data
     ) {
       //console.log(data)
-      var genre = data.genre_id.split(",")
+
       let genreArray = genre.map(id => parseInt(id))
       //console.log("genreArray:", genreArray)
       let query = "https://api.themoviedb.org/3/discover/movie?api_key=" + process.env.APIKEY + "&with_genres=" + genreArray[0]

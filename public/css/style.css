@@ -1,38 +1,53 @@
-.jumbotron{
-    min-height: calc(100vh - 56px);
-    margin-bottom: 0;
+.jumbotron {
+  min-height: calc(100vh - 56px);
+  margin-bottom: 0;
 }
-.display-4{
-    text-align: center;
+.display-4 {
+  text-align: center;
 }
 .navbarNav {
-    text-align: center;
-    color: black;
-    border-top: 0%;
+  text-align: center;
+  color: black;
+  border-top: 0%;
 }
 .navbar {
-    text-align: center;
+  text-align: center;
 }
-.lead{
-    text-align: center;
+.lead {
+  text-align: center;
 }
-#button{
-    border-radius: 24px;
-    margin-left: 10%;
-    margin-top: 8%;
+#button {
+  border-radius: 24px;
+  margin-left: 10%;
+  margin-top: 8%;
 }
 
 #one {
-    color: brown;
+  color: brown;
 }
 
 .card {
-    /* float: left;
+  /* float: left;
     width: 33.33%; */
-    /* margin-right: 5%;
+  /* margin-right: 5%;
     margin-left: 2%; */
 }
 
 .card-body {
-    padding: 25px;
+  padding: 25px;
+}
+
+#movies img,
+#movie img {
+  width: 100%;
+}
+
+@media (min-width: 960px) {
+  #movies .col-md-3 .well {
+    height: 390px;
+  }
+
+  #movies .col-md-3 img {
+    height: 240px;
+  }
 }

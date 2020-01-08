@@ -125,10 +125,23 @@ $(".movie").on("click", function () {
 
   $.ajax({
     method: "GET",
-    url: "/movie" + id,
+    url: "/mood" + "http://localhost:3000/mood/funny" + "buttonText",
     data: { id: id },
     success: function (data) {
       console.log(data);
     }
   })
 });
+
+// $.ajax({
+//   method: "GET",
+//   url: "/mood" + buttonText,
+//   data: { id: id },
+//   success: function (data) {
+//    console.log(data);
+//    create html for the movie
+//   }
+// })
+
+// to get movie result 
+
