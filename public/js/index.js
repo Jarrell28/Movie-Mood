@@ -204,3 +204,35 @@ $("#loginAccountForm").on("submit", function (e) {
   })
 
 });
+
+$(".mood-btn").on("click", function () {
+
+  var btnText = $(this).text();
+
+  $.ajax({
+    type: "GET",
+    url: "/mood/" + btnText,
+    success: function (data) {
+      console.log(data);
+
+      $(".popular").empty();
+      data.results.forEach(function (result) {
+
+        var moodHtml = `<div class="card">
+      <img src="https://image.tmdb.org/t/p/original${result.backdrop_path}" class="card-img-top" alt="...">
+      <div class="card-body">
+          <h5 class="card-title">${result.title}</h5>
+          <p class="card-text">Rating: ${result.vote_average}</p>
+          <button class="btn btn-info movie" data-id=${result.id}>View Details</button>
+          </div>
+      </div>`;
+
+        $(".popular").append(moodHtml);
+
+      });
+
+      //html for mood cards
+
+    }
+  })
+})
