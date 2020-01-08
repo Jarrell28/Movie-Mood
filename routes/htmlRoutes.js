@@ -15,8 +15,7 @@ module.exports = function (app) {
   //Load example page and pass in an example by id
   app.get("/mood/:mood", function (req, res) {
     let inputMood = req.params.mood
-    // eliminate later
-    inputMood = "funny"
+
     db.Mood.findOne({ where: { mood: inputMood } }).then(function (
       data
     ) {
@@ -52,6 +51,53 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/account", function (req, res) {
+    ssn = req.session;
+    // ssn.destroy();
+    if (!ssn.username) {
+      res.redirect("/account/login");
+    } else {
+      db.User.findOne({ where: { username: ssn.username } }).then(function (dbUser) {
+        res.render("account", {
+          user: dbUser
+        });
+      });
+
+    }
+  })
+
+  app.get("/account/login", function (req, res) {
+    res.render("loginAccount");
+  })
+
+  app.post("/account/login", function (req, res) {
+    var response = {};
+    db.User.findOne({ where: { email: req.body.email, password: req.body.password } }).then(function (dbUser) {
+      ssn = req.session;
+      ssn.username = dbUser.get("username");
+      response.success = true;
+      res.json(response);
+
+    }).catch(function (err) {
+      response.success = false;
+      res.json(response);
+    })
+  })
+
+  app.post("/account/create", function (req, res) {
+    db.User.create(req.body).then(function (dbUser) {
+      ssn = req.session;
+      ssn.username = dbUser.get('username');
+      var response = { success: true };
+
+      res.json(response);
+    })
+  })
+
+  app.get("/account/create", function (req, res) {
+    res.render("createAccount");
+  })
+
   //Gets Popular Movies and Passes data to popular.handlebars
   app.get("/popular", function (req, res) {
     axios
@@ -61,8 +107,9 @@ module.exports = function (app) {
         }
       })
       .then(function (response) {
+        console.log(response.data);
         res.render("popular", {
-          data: response.data.results
+          popular: response.data.results
         });
       })
       .catch(function (err) {
@@ -80,7 +127,7 @@ module.exports = function (app) {
       })
       .then(function (response) {
 
-        console.log(response.data);
+        // console.log(response.data);
         res.render("latest", {
           data: response.data
         });
@@ -111,8 +158,16 @@ module.exports = function (app) {
       });
   });
 
+  app.get("/account/logout", function (req, res) {
+    ssn = req.session;
+    ssn.destroy(function () {
+      res.redirect("/");
+    })
+  })
+
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");
   });
+
 };
