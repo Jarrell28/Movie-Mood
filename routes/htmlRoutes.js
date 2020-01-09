@@ -2,6 +2,20 @@ var db = require("../models");
 var axios = require("axios");
 
 module.exports = function (app) {
+
+  app.all("/*", function (req, res, next) {
+    ssn = req.session;
+
+    if (ssn.username) {
+      res.locals.data = {
+        loggedIn: true,
+        username: ssn.username
+      };
+    }
+
+    next();
+
+  })
   // Load index page
   app.get("/", function (req, res) {
     db.Mood.findAll({}).then(function (dbMoods) {
@@ -27,8 +41,6 @@ module.exports = function (app) {
       //console.log(query)
       axios.get(query)
         .then(function (response) {
-          //console.log("MOVIES")
-          console.log(response.data);
 
           // verify that the movie contain at least all the genre coming for the genreArray
           //let results = response.data.map(movie => movie.)
@@ -38,19 +50,7 @@ module.exports = function (app) {
 
   });
 
-  // find  in the api movies with genre = the info insee onf the genre_id
-
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function (req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function (
-      dbExample
-    ) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
-  });
-
+  //ACCOUNT ROUTES
   app.get("/account", function (req, res) {
     ssn = req.session;
     // ssn.destroy();
@@ -89,13 +89,36 @@ module.exports = function (app) {
       ssn = req.session;
       ssn.username = dbUser.get('username');
       var response = { success: true };
-
       res.json(response);
     })
   })
 
   app.get("/account/create", function (req, res) {
     res.render("createAccount");
+  })
+
+  app.get("/account/logout", function (req, res) {
+    ssn = req.session;
+    ssn.destroy(function () {
+      res.redirect("/");
+    })
+  })
+
+  app.post("/account", function (req, res) {
+    ssn = req.session;
+    var response = {};
+    db.User.update({ username: req.body.username, email: req.body.email, password: req.body.password }, {
+      where: {
+        username: ssn.username
+      }
+    }).then(function () {
+      ssn.username = req.body.username;
+      response.success = true;
+      res.json(response);
+    }).catch(function (err) {
+      response.success = false;
+      res.json(response);
+    })
   })
 
   //Gets Popular Movies and Passes data to popular.handlebars
@@ -107,7 +130,6 @@ module.exports = function (app) {
         }
       })
       .then(function (response) {
-        console.log(response.data);
         res.render("popular", {
           popular: response.data.results
         });
@@ -148,7 +170,6 @@ module.exports = function (app) {
       })
       .then(function (response) {
 
-        console.log(response.data);
         res.render("genre", {
           genres: response.data.genres
         });
@@ -158,12 +179,7 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/account/logout", function (req, res) {
-    ssn = req.session;
-    ssn.destroy(function () {
-      res.redirect("/");
-    })
-  })
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {

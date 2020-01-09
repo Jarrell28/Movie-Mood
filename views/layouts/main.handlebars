@@ -20,27 +20,39 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav w-100">
           <li class="nav-item active">
             <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="/popular">Most Popular<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
+          {{!-- <li class="nav-item active">
             <a class="nav-link" href="/latest">The Latest<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="/genre">Genre<span class="sr-only">(current)</span></a>
+          </li> --}}
+          {{#if data.loggedIn}}
+          <li class="nav-item active ml-auto">
+            <a class="nav-link" href="/account"><i class="fas fa-user h5 mb-0"></i> {{data.username}}</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/account">Account<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/account/logout">Logout {{data.msg}}<span class="sr-only">(current)</span></a>
           </li>
+
+          {{else}}
+          <li class="nav-item active ml-auto">
+            <a class="nav-link" href="/account/login">Login<span class="sr-only">(current)</span></a>
+          </li>
+
+          {{/if}}
         </ul>
       </div>
     </div>
   </nav>
   {{{body}}}
+  <script src="https://kit.fontawesome.com/c48e179834.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
