@@ -52,17 +52,17 @@
   }
 }
 
-.popular {
+.card-layout {
   display: flex;
   flex-wrap: wrap;
 }
 
-.popular .card {
+.card-layout .card {
   width: 30%;
   margin: 30px 15px;
 }
 
-.popular .card .card-body {
+.card-layout .card .card-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

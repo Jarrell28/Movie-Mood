@@ -119,7 +119,7 @@ $("#search-form").on("submit", handleSearch);
 
 
 //Gets Movie Data when clicking movie poster from backend
-$(".popular").on("click", ".movie", function (e) {
+$(".card-layout").on("click", ".movie", function (e) {
   e.preventDefault();
 
   var id = $(this).data("id");
@@ -131,7 +131,7 @@ $(".popular").on("click", ".movie", function (e) {
     success: function (data) {
       console.log(data);
 
-      $("#popular-modal .modal-title").html(data.title);
+      $("#movie-modal .modal-title").html(data.title);
 
       var genres = [];
       data.genres.forEach(function (genre) {
@@ -150,9 +150,9 @@ $(".popular").on("click", ".movie", function (e) {
         <p class="my-2">Genres: ${genres.join()}</p>
       `;
 
-      $("#popular-modal .modal-body").html(movieHtml);
+      $("#movie-modal .modal-body").html(movieHtml);
 
-      $("#popular-modal-btn").trigger("click");
+      $("#movie-modal-btn").trigger("click");
     }
   })
 });
@@ -205,6 +205,31 @@ $("#loginAccountForm").on("submit", function (e) {
 
 });
 
+$("#accountForm").on("submit", function (e) {
+  e.preventDefault();
+
+  var account = {
+    username: $("#accountUsername").val(),
+    email: $("#accountEmail").val(),
+    password: $("#accountPassword").val()
+  }
+
+  $.ajax({
+    method: "POST",
+    url: "/account",
+    data: account,
+    success: function (data) {
+      if (data.success) {
+        // window.location.href = "/account";
+        console.log("success");
+      } else {
+        console.log("login failed");
+      }
+    }
+  })
+
+});
+
 $(".mood-btn").on("click", function () {
 
   var btnText = $(this).text();
@@ -215,7 +240,7 @@ $(".mood-btn").on("click", function () {
     success: function (data) {
       console.log(data);
 
-      $(".popular").empty();
+      $(".card-layout").empty();
       data.results.forEach(function (result) {
 
         var moodHtml = `<div class="card">
@@ -227,7 +252,7 @@ $(".mood-btn").on("click", function () {
           </div>
       </div>`;
 
-        $(".popular").append(moodHtml);
+        $(".card-layout").append(moodHtml);
 
       });
 
