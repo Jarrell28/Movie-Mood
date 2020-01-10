@@ -119,16 +119,88 @@ $("#search-form").on("submit", handleSearch);
 
 
 //Gets Movie Data when clicking movie poster from backend
-$(".movie").on("click", function () {
+$(".popular").on("click", ".movie", function (e) {
+  e.preventDefault();
 
   var id = $(this).data("id");
 
   $.ajax({
     method: "GET",
-    url: "/movie" + id,
+    url: "/movie/" + id,
     data: { id: id },
     success: function (data) {
       console.log(data);
+
+      $("#popular-modal .modal-title").html(data.title);
+
+      var genres = [];
+      data.genres.forEach(function (genre) {
+        genres.push(genre.name);
+      });
+
+      var movieHtml = `
+        <img src="https://image.tmdb.org/t/p/original${data.backdrop_path}"/ class="d-block img-fluid">
+        <p class="mt-2">${data.overview}</p>
+
+        <p class="my-2"><a href="${data.homepage}" target="_blank">Movie Homepage</a></p>
+
+        <p class="my-2">Released Date: ${data.release_date}</p>
+        <p class="my-2">Rating: ${data.vote_average}</p>
+        <p class="my-2">Minutes: ${data.runtime}</p>
+        <p class="my-2">Genres: ${genres.join()}</p>
+      `;
+
+      $("#popular-modal .modal-body").html(movieHtml);
+
+      $("#popular-modal-btn").trigger("click");
     }
   })
+});
+
+//Create User account handle
+
+$("#createAccountForm").on("submit", function (e) {
+  e.preventDefault();
+
+  var account = {
+    username: $("#createUsername").val(),
+    email: $("#createEmail").val(),
+    password: $("#createPassword").val()
+  }
+
+  $.ajax({
+    method: "POST",
+    url: "/account/create",
+    data: account,
+    success: function (data) {
+
+      if (data.success) {
+        window.location.href = "/account";
+      }
+    }
+  })
+
+});
+
+$("#loginAccountForm").on("submit", function (e) {
+  e.preventDefault();
+
+  var account = {
+    email: $("#loginEmail").val(),
+    password: $("#loginPassword").val()
+  }
+
+  $.ajax({
+    method: "POST",
+    url: "/account/login",
+    data: account,
+    success: function (data) {
+      if (data.success) {
+        window.location.href = "/account";
+      } else {
+        console.log("login failed");
+      }
+    }
+  })
+
 });

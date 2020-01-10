@@ -1,3 +1,4 @@
+console.log("API ROUTES")
 var db = require("../models");
 var axios = require("axios");
 
@@ -8,7 +9,6 @@ module.exports = function (app) {
       res.json(dbExamples);
     });
   });
-
   // Create a new example
   app.post("/api/examples", function (req, res) {
     db.Example.create(req.body).then(function (dbExample) {
@@ -42,7 +42,20 @@ module.exports = function (app) {
         api_key: process.env.APIKEY
       }
     }).then(function (response) {
-      res.json(respone.data)
+      res.json(response.data)
     })
   })
+
+
+  // app.get("/", function (req, res) {
+  //   axios.get("https://api.themoviedb.org/3/genres/get-movie-list", {
+  //     params: {
+  //       api_key: process.env.APIKEY
+  //     }
+  //   }).then(function (response) {
+  //     console.log(response.data)
+  //     res.json(response.data)
+  //   })
+
+  // })
 };

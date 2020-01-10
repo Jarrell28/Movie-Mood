@@ -4,6 +4,11 @@
 }
 .display-4{
     text-align: center;
+    color: whitesmoke;
+}
+#indexjumbo {
+    background-image: url("https://images.pexels.com/photos/2507025/pexels-photo-2507025.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: cover;
 }
 .navbarNav {
     text-align: center;
@@ -15,12 +20,31 @@
 }
 .lead{
     text-align: center;
+    color: white;
 }
 #button{
     border-radius: 24px;
     margin-left: 10%;
     margin-top: 8%;
 }
+.btn {
+    transition: .3s;
+  }
+  .btn:hover {
+    animation: pulse 1s infinite;
+    transition: .3s;
+  }
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    70% {
+      transform: scale(.9);
+    }
+      100% {
+      transform: scale(1);
+    }
+  }
 
 #one {
     color: brown;
@@ -35,4 +59,25 @@
 
 .card-body {
     padding: 25px;
+}
+
+.popular {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.popular .card {
+    width: 30%;
+    margin: 30px 15px;
+}
+
+.popular .card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+#account {
+    background-image: url("https://images.pexels.com/photos/265685/pexels-photo-265685.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
 }
