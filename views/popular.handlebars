@@ -3,7 +3,7 @@
 
         <h1 class="h2" style="margin: 0 15px;">Most Popular</h1>
 
-        <div class="popular">
+        <div class="card-layout">
 
             {{#each popular}}
 
@@ -19,12 +19,12 @@
             {{/each}}
         </div>
 
-        <button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#popular-modal"
-            id="popular-modal-btn">
+        <button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#movie-modal"
+            id="movie-modal-btn">
             Launch demo modal
         </button>
 
-        <div class="modal fade" tabindex="-1" role="dialog" id="popular-modal">
+        <div class="modal fade" tabindex="-1" role="dialog" id="movie-modal">
             <div class="modal-dialog" role="document" style="max-width: 700px;">
                 <div class="modal-content">
                     <div class="modal-header">

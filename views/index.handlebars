@@ -5,14 +5,41 @@
     <p class="lead">I'm feeling....</p>
 
     {{#each moods}}
-    <button type="button" class="btn btn-info" id="button">{{this.mood}}</button>
+    <button type="button" class="btn btn-info mood-btn" id="button">{{this.mood}}</button>
     {{/each}}
 
+    <div class="card-layout">
 
-    <button type="button" class="btn btn-info" id="button">Funny</button>
-    <button type="button" class="btn btn-info" id="button">Romantic</button>
-    <button type="button" class="btn btn-info" id="button">Uplifting</button>
-    <button type="button" class="btn btn-info" id="button">Dark</button>
-    <button type="button" class="btn btn-info" id="button">Info</button> --}}
+    </div>
+
+    <button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#movie-modal"
+      id="movie-modal-btn">
+      Launch demo modal
+    </button>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="movie-modal">
+      <div class="modal-dialog" role="document" style="max-width: 700px;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     {{!-- <button type="button" class="btn btn-info" id="button">Funny</button> --}} --}}
+    {{!-- <button type="button" class="btn btn-info" id="button">Romantic</button> --}}
+    {{!-- <button type="button" class="btn btn-info" id="button">Uplifting</button> --}}
+    {{!-- <button type="button" class="btn btn-info" id="button">Dark</button> --}}
+    {{!-- <button type="button" class="btn btn-info" id="button">Info</button> --}} --}}
   </div>
 </div>

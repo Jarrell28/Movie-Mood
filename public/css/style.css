@@ -1,6 +1,6 @@
-.jumbotron{
-    min-height: calc(100vh - 56px);
-    margin-bottom: 0;
+.jumbotron {
+  min-height: calc(100vh - 56px);
+  margin-bottom: 0;
 }
 .display-4{
     text-align: center;
@@ -8,24 +8,24 @@
 }
 #indexjumbo {
     background-image: url("https://images.pexels.com/photos/2507025/pexels-photo-2507025.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-    background-size: cover;
+    background-size: 100%;
 }
 .navbarNav {
-    text-align: center;
-    color: black;
-    border-top: 0%;
+  text-align: center;
+  color: black;
+  border-top: 0%;
 }
 .navbar {
-    text-align: center;
+  text-align: center;
 }
 .lead{
     text-align: center;
     color: white;
 }
-#button{
-    border-radius: 24px;
-    margin-left: 10%;
-    margin-top: 8%;
+#button {
+  border-radius: 24px;
+  margin-left: 10%;
+  margin-top: 8%;
 }
 .btn {
     transition: .3s;
@@ -47,32 +47,40 @@
   }
 
 #one {
-    color: brown;
+  color: brown;
 }
 
-.card {
-    /* float: left;
-    width: 33.33%; */
-    /* margin-right: 5%;
-    margin-left: 2%; */
-}
+/* .card {
+  width: 33.33%; 
+  margin-bottom: 4%;
+  margin-top: 5%;
+ }  */
 
 .card-body {
-    padding: 25px;
+  padding: 25px;
 }
 
-.popular {
-    display: flex;
-    flex-wrap: wrap;
-    
+#movies img,
+#movie img {
+  width: 100%;
 }
 
-.popular .card {
-    width: 30%;
-    margin: 30px 15px;
+@media (min-width: 960px) {
+  #movies .col-md-3 .well {
+    height: 390px;
+  }
+
+  #movies .col-md-3 img {
+    height: 240px;
+  }
 }
 
-.popular .card .card-body {
+.card-layout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-layout .card .card-body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
