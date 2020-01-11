@@ -142,6 +142,8 @@ $(".card-layout").on("click", ".movie", function (e) {
         <img src="https://image.tmdb.org/t/p/original${data.backdrop_path}"/ class="d-block img-fluid">
         <p class="mt-2">${data.overview}</p>
 
+        <p><i class="far fa-heart h3 favorite" data-id="${data.id}"></i></p>
+
         <p class="my-2"><a href="${data.homepage}" target="_blank">Movie Homepage</a></p>
 
         <p class="my-2">Released Date: ${data.release_date}</p>
@@ -153,6 +155,41 @@ $(".card-layout").on("click", ".movie", function (e) {
       $("#movie-modal .modal-body").html(movieHtml);
 
       $("#movie-modal-btn").trigger("click");
+    }
+  })
+});
+
+$(".card-layout").on("click", ".favorited", function () {
+  var id = $(this).data("id");
+
+  $.ajax({
+    type: "POST",
+    url: "/favorite/delete",
+    data: { id },
+    success: function (response) {
+      if (response.success) {
+        console.log("success");
+        location.reload();
+      } else {
+        console.log("false");
+      }
+    }
+  })
+});
+
+$(".modal-body").on("click", ".favorite", function () {
+  var id = $(this).data("id");
+
+  $.ajax({
+    type: "POST",
+    url: "/favorite",
+    data: { id },
+    success: function (response) {
+      if (response.success) {
+        console.log(response.msg);
+      } else {
+        console.log(response.msg);
+      }
     }
   })
 });
@@ -261,3 +298,4 @@ $(".mood-btn").on("click", function () {
     }
   })
 })
+

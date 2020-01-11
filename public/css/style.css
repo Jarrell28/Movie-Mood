@@ -113,3 +113,7 @@ html,body {
 #mostpop .h2 {
     color: white;
 }
+
+.favorite, .favorited {
+  cursor: pointer;
+}
