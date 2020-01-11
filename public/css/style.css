@@ -1,5 +1,6 @@
 html,body {
     min-height: 100vh;
+    transition: all;
 }
 .jumbotron {
   min-height: 100vh;
@@ -9,6 +10,9 @@ html,body {
     text-align: center;
     color: whitesmoke;
     font-size: 75px;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 5%;
+   transition-property: all;
 }
 .lead {
     font-size: 30px;
@@ -18,7 +22,6 @@ html,body {
     background-size: cover;
     background-attachment: fixed;
     background-position: auto,center top;
-    z-index: 1;
 }
 .navbarNav {
   text-align: center;
@@ -30,7 +33,15 @@ html,body {
   color: white;
   overflow: hidden;
   position: absolute;
+  width: 100%;
 }
+.navbar .navbar-brand {
+    color: white;
+}
+#navbarNav .nav-link {
+    color: white;
+}
+
 .lead{
     text-align: center;
     color: white;
@@ -58,10 +69,6 @@ html,body {
       transform: scale(1);
     }
   }
-
-#one {
-  color: brown;
-}
 
 /* .card {
   width: 33.33%; 
