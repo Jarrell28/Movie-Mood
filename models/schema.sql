@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS project2;
-CREATE DATABASE project2;
+DROP DATABASE IF EXISTS movie_mood;
+CREATE DATABASE movie_mood;
 
-use project2;
+use movie_mood;
 
 CREATE TABLE moods
 (
