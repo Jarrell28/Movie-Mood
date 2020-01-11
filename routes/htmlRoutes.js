@@ -58,11 +58,44 @@ module.exports = function (app) {
       res.redirect("/account/login");
     } else {
       db.User.findOne({ where: { username: ssn.username } }).then(function (dbUser) {
-        res.render("account", {
-          user: dbUser
-        });
-      });
+        var favorites = dbUser.get("favorites");
+        if (favorites) {
+          var favoritesArray = favorites.split(",");
+          var favoriteArr = [];
 
+          if (favoritesArray.length > 0) {
+            var favoriteFunc = new Promise((resolve, reject) => {
+              favoritesArray.forEach(function (favorite) {
+                axios.get("https://api.themoviedb.org/3/movie/" + favorite, {
+                  params: {
+                    api_key: process.env.APIKEY
+                  }
+                }).then(function (response) {
+                  favoriteArr.push(response.data);
+                  resolve();
+                })
+              });
+            })
+
+            favoriteFunc.then(function () {
+              res.render("account", {
+                user: dbUser,
+                favorites: favoriteArr
+              });
+            })
+          }
+        } else {
+          res.render("account", {
+            user: dbUser,
+            noFavorites: {
+              msg: "You have no favorites. Favorite some movies!"
+            }
+          });
+        }
+
+
+
+      });
     }
   })
 
@@ -179,6 +212,73 @@ module.exports = function (app) {
       });
   });
 
+
+  app.post("/favorite", function (req, res) {
+    ssn = req.session;
+    var response = {};
+    var favorites = "";
+
+    if (!ssn.username) {
+      response.success = false;
+      response.msg = "You must log in to favorite movies";
+      res.json(response);
+    } else {
+      db.User.findOne({
+        where: {
+          username: ssn.username
+        }
+      }).then(function (dbUser) {
+        var favorite = dbUser.get("favorites");
+
+        if (favorite === null || favorite === undefined || favorite === "") {
+          favorite = req.body.id;
+          favorites = favorite;
+        } else {
+          favorite += "," + req.body.id;
+          favorites = favorite;
+        }
+
+        db.User.update({ favorites: favorites }, {
+          where: {
+            username: ssn.username
+          }
+        }).then(function () {
+          response.success = true;
+          response.msg = "You have favorited this movie";
+          res.json(response);
+        })
+      });
+    }
+  });
+
+  app.post("/favorite/delete", function (req, res) {
+    ssn = req.session;
+    var response = {};
+
+    db.User.findOne({
+      where: {
+        username: ssn.username
+      }
+    }).then(function (dbUser) {
+      var favorite = dbUser.get("favorites");
+      var favoriteArr = favorite.split(",");
+
+      var favoriteIndex = favoriteArr.indexOf(req.body.id);
+      favoriteArr.splice(favoriteIndex, 1);
+
+      var newFavorite = favoriteArr.join(",");
+
+      db.User.update({ favorites: newFavorite }, {
+        where: {
+          username: ssn.username
+        }
+      }).then(function () {
+        response.success = true;
+        response.msg = "You have unfavorited this movie";
+        res.json(response);
+      })
+    })
+  });
 
 
   // Render 404 page for any unmatched routes

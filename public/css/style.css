@@ -68,3 +68,7 @@
   justify-content: space-between;
   align-items: flex-start;
 }
+
+.favorite, .favorited {
+  cursor: pointer;
+}
