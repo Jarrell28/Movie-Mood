@@ -1,37 +1,73 @@
+html,body {
+    min-height: 100vh;
+}
 .jumbotron {
-  min-height: calc(100vh - 56px);
+  min-height: 100vh;
   margin-bottom: 0;
 }
-.display-4 {
-  text-align: center;
+.display-4{
+    text-align: center;
+    color: whitesmoke;
+    font-size: 75px;
+}
+.lead {
+    font-size: 30px;
+}
+#indexjumbo {
+    background-image: url("https://images.pexels.com/photos/2507025/pexels-photo-2507025.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: auto,center top;
+    z-index: 1;
 }
 .navbarNav {
   text-align: center;
-  color: black;
   border-top: 0%;
+  color: white;
 }
 .navbar {
   text-align: center;
+  color: white;
+  overflow: hidden;
+  position: absolute;
 }
-.lead {
-  text-align: center;
+.lead{
+    text-align: center;
+    color: white;
 }
 #button {
   border-radius: 24px;
   margin-left: 10%;
   margin-top: 8%;
 }
+.btn {
+    transition: .3s;
+  }
+  .btn:hover {
+    animation: pulse 1s infinite;
+    transition: .3s;
+  }
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    70% {
+      transform: scale(.9);
+    }
+      100% {
+      transform: scale(1);
+    }
+  }
 
 #one {
   color: brown;
 }
 
-.card {
-  /* float: left;
-    width: 33.33%; */
-  /* margin-right: 5%;
-    margin-left: 2%; */
-}
+/* .card {
+  width: 33.33%; 
+  margin-bottom: 4%;
+  margin-top: 5%;
+ }  */
 
 .card-body {
   padding: 25px;
@@ -58,13 +94,22 @@
 }
 
 .card-layout .card {
-  width: 30%;
-  margin: 30px 15px;
+    width: 30%;
+    margin: 30px 15px;
 }
 
 .card-layout .card .card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+#mostpop {
+    background-image: url("https://images.unsplash.com/photo-1415025148099-17fe74102b28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60");
+    background-size: 100%;
+    background-attachment: fixed;
+    background-position: auto,center top;
+}
+#mostpop .h2 {
+    color: white;
 }

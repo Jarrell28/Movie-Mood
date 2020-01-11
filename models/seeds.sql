@@ -1,4 +1,4 @@
-use project2;
+use movie_mood;
 
 INSERT INTO moods
     (mood, genre_id)
