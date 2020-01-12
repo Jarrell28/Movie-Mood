@@ -17,7 +17,7 @@ if (process.env.JAWSDB_URL) {
     config.database,
     config.username,
     config.password,
-    config
+    config.host
   );
 }
 
