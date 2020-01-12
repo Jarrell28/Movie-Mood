@@ -186,6 +186,8 @@ $(".modal-body").on("click", ".favorite", function () {
     data: { id },
     success: function (response) {
       if (response.success) {
+        $(this).removeClass("far");
+        $(this).addClass("fas");
         console.log(response.msg);
       } else {
         console.log(response.msg);
