@@ -1,24 +1,25 @@
-html,body {
-    min-height: 100vh;
+html,
+body {
+  min-height: 100vh;
 }
 .jumbotron {
   min-height: 100vh;
   margin-bottom: 0;
 }
-.display-4{
-    text-align: center;
-    color: whitesmoke;
-    font-size: 75px;
+.display-4 {
+  text-align: center;
+  color: whitesmoke;
+  font-size: 75px;
 }
 .lead {
-    font-size: 30px;
+  font-size: 30px;
 }
 #indexjumbo {
-    background-image: url("https://images.pexels.com/photos/2507025/pexels-photo-2507025.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: auto,center top;
-    z-index: 1;
+  background-image: url("https://images.pexels.com/photos/2507025/pexels-photo-2507025.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: auto, center top;
+  z-index: 1;
 }
 .navbarNav {
   text-align: center;
@@ -31,9 +32,9 @@ html,body {
   overflow: hidden;
   position: absolute;
 }
-.lead{
-    text-align: center;
-    color: white;
+.lead {
+  text-align: center;
+  color: white;
 }
 #button {
   border-radius: 24px;
@@ -41,23 +42,23 @@ html,body {
   margin-top: 8%;
 }
 .btn {
-    transition: .3s;
+  transition: 0.3s;
+}
+.btn:hover {
+  animation: pulse 1s infinite;
+  transition: 0.3s;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-  .btn:hover {
-    animation: pulse 1s infinite;
-    transition: .3s;
+  70% {
+    transform: scale(0.9);
   }
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-    70% {
-      transform: scale(.9);
-    }
-      100% {
-      transform: scale(1);
-    }
+  100% {
+    transform: scale(1);
   }
+}
 
 #one {
   color: brown;
@@ -94,26 +95,27 @@ html,body {
 }
 
 .card-layout .card {
-    width: 30%;
-    margin: 30px 15px;
+  width: 30%;
+  margin: 30px 15px;
 }
 
 .card-layout .card .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 #mostpop {
-    background-image: url("https://images.unsplash.com/photo-1415025148099-17fe74102b28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60");
-    background-size: 100%;
-    background-attachment: fixed;
-    background-position: auto,center top;
+  background-image: url("https://images.unsplash.com/photo-1415025148099-17fe74102b28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60");
+  background-size: 100%;
+  background-attachment: fixed;
+  background-position: auto, center top;
 }
 #mostpop .h2 {
-    color: white;
+  color: white;
 }
 
-.favorite, .favorited {
+.favorite,
+.favorited {
   cursor: pointer;
 }
