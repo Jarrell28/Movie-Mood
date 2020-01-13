@@ -35,7 +35,10 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.9);
+
+  background-size: 100%;
+  background-attachment: fixed;
+  background-position: auto, center top;
 }
 
 .wrap-login100 {
@@ -45,10 +48,10 @@
   padding: 55px 55px 37px 55px;
 
   background: #716c79;
-  background: -webkit-linear-gradient(top, #afb0d3, #494849);
-  background: -o-linear-gradient(top, #afb0d3, #494849);
-  background: -moz-linear-gradient(top, #afb0d3, #494849);
-  background: linear-gradient(top, #afb0d3, #494849);
+  background: -webkit-linear-gradient(top, #afb0d3, #265988);
+  background: -o-linear-gradient(top, #afb0d3, #265988);
+  background: -moz-linear-gradient(top, #afb0d3, #265988);
+  background: linear-gradient(top, #afb0d3, #265988);
 }
 
 /*------------------------------------------------------------------
@@ -79,7 +82,7 @@
 .login100-form-title {
   font-family: Poppins-Medium;
   font-size: 30px;
-  color: #fff;
+  color: rgb(231, 229, 229);
   line-height: 1.2;
   text-align: center;
   text-transform: uppercase;
@@ -93,14 +96,14 @@
 .wrap-input100 {
   width: 100%;
   position: relative;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.24);
+  border-bottom: 2px solid rgba(108, 21, 221, 0.24);
   margin-bottom: 30px;
 }
 
 .input100 {
   font-family: Poppins-Regular;
   font-size: 16px;
-  color: #fff;
+  color: rgb(52, 13, 141);
   line-height: 1.2;
 
   display: block;
@@ -135,13 +138,13 @@
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 
-  background: #fff;
+  background: rgb(107, 74, 150);
 }
 
 .focus-input100::after {
   font-family: Material-Design-Iconic-Font;
   font-size: 22px;
-  color: #fff;
+  color: rgb(54, 187, 180);
 
   content: attr(data-placeholder);
   display: block;
@@ -196,10 +199,17 @@
   display: none;
 }
 
+.login {
+  background-image: url("https://images.unsplash.com/photo-1415025148099-17fe74102b28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60");
+  background-size: 100%;
+  background-attachment: fixed;
+  background-position: auto, center top;
+}
+
 .label-checkbox100 {
   font-family: Poppins-Regular;
   font-size: 13px;
-  color: #fff;
+  color: rgb(240, 232, 232);
   line-height: 1.2;
 
   display: block;
@@ -225,7 +235,7 @@
   width: 16px;
   height: 16px;
   border-radius: 2px;
-  background: #fff;
+  background: rgb(235, 232, 236);
   left: 0;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -236,7 +246,7 @@
 }
 
 .input-checkbox100:checked + .label-checkbox100::before {
-  color: #555555;
+  color: #f3e5e5;
 }
 
 /*------------------------------------------------------------------

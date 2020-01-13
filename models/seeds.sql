@@ -41,3 +41,16 @@ VALUES('thought-provoking', '9648, 10751, 18, 878');
 INSERT INTO moods
     (mood, genre_id)
 VALUES('action-packed', '28, 12, 16, 53');
+
+INSERT INTO moods
+    (mood, genre_id)
+VALUES('glorified', '99, 18, 10752, 28');
+
+INSERT INTO moods
+    (mood, genre_id)
+VALUES('heart-warming', '12, 16, 14, 35');
+
+
+INSERT INTO moods
+    (mood, genre_id)
+VALUES('true-Story', '80, 99, 36, 10752');
