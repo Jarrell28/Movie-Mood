@@ -5,16 +5,13 @@ module.exports = function (app) {
 
   app.all("/*", function (req, res, next) {
     ssn = req.session;
-
     if (ssn.username) {
       res.locals.data = {
         loggedIn: true,
         username: ssn.username
       };
     }
-
     next();
-
   })
   // Load index page
   app.get("/", function (req, res) {
@@ -92,9 +89,6 @@ module.exports = function (app) {
             }
           });
         }
-
-
-
       });
     }
   })
@@ -153,64 +147,6 @@ module.exports = function (app) {
       res.json(response);
     })
   })
-
-  //Gets Popular Movies and Passes data to popular.handlebars
-  app.get("/popular", function (req, res) {
-    axios
-      .get("https://api.themoviedb.org/3/movie/popular", {
-        params: {
-          api_key: process.env.APIKEY,
-        }
-      })
-      .then(function (response) {
-        res.render("popular", {
-          popular: response.data.results
-        });
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  });
-
-  //Gets Latest Movies and Passes data to latest.handlebars
-  app.get("/latest", function (req, res) {
-    axios
-      .get("https://api.themoviedb.org/3/movie/latest", {
-        params: {
-          api_key: process.env.APIKEY,
-        }
-      })
-      .then(function (response) {
-
-        // console.log(response.data);
-        res.render("latest", {
-          data: response.data
-        });
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  });
-
-
-  //Gets Genres and Passes data to genre.handlebars
-  app.get("/genre", function (req, res) {
-    axios
-      .get("https://api.themoviedb.org/3/genre/movie/list?", {
-        params: {
-          api_key: process.env.APIKEY,
-        }
-      })
-      .then(function (response) {
-
-        res.render("genre", {
-          genres: response.data.genres
-        });
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  });
 
 
   app.post("/favorite", function (req, res) {
