@@ -68,7 +68,10 @@ module.exports = function (app) {
                     api_key: process.env.APIKEY
                   }
                 }).then(function (response) {
-                  favoriteArr.push(response.data);
+                  var data = response.data;
+                  var overview = data.overview.substring(0, 80) + "...";
+                  data.trimmedOverview = overview;
+                  favoriteArr.push(data);
                   resolve();
                 })
               });

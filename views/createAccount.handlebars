@@ -1,4 +1,4 @@
-<div class="jumbotron jumbotron-fluid" id="indexjumbo">
+{{!-- <div class="jumbotron jumbotron-fluid" id="indexjumbo">
 
     <div class="container" id="account">
         <h1 class="h2 mt-4">Create Account</h1>
@@ -26,4 +26,51 @@
         </form>
 
     </div>
+</div> --}}
+
+<div class="jumbotron jumbotron-fluid" id="indexjumbo">
+
+    <form id="createAccountForm">
+
+        <div class="limiter">
+            <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+                <div class="wrap-login100">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-logo">
+                            <!-- <i class="zmdi zmdi-landscape"></i> -->
+                            <img src="/images/favicon.png" width="45px">
+                        </span> <span class="login100-form-title p-b-34 p-t-27">
+                            Create Account
+                        </span>
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter username">
+                            <input class="input100" type="text" placeholder="Username" id="createUsername">
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter email">
+                            <input class="input100" type="text" placeholder="Email" id="createEmail">
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter password">
+                            <input class="input100" type="password" name="pass" placeholder="Password"
+                                id="createPassword">
+                            <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                        </div>
+
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn">
+                                Sign Up
+                            </button>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <p class="my-2"><a href="/account/login" class="text-white">Have an account?</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </form>
+
 </div>

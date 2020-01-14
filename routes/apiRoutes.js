@@ -4,6 +4,17 @@ var axios = require("axios");
 
 module.exports = function (app) {
 
+  app.all("/*", function (req, res, next) {
+    ssn = req.session;
+    if (ssn.username) {
+      res.locals.data = {
+        loggedIn: true,
+        username: ssn.username
+      };
+    }
+    next();
+  })
+
   //Handles the movie search form, gets data and passes it back to front end
   app.post("/search/movie", function (req, res) {
     axios.get("https://api.themoviedb.org/3/search/movie", {
@@ -36,8 +47,14 @@ module.exports = function (app) {
         }
       })
       .then(function (response) {
+        var data = response.data.results;
+        data.forEach(function (result) {
+          var overview = result.overview.substring(0, 80) + "...";
+          result.trimmedOverview = overview;
+        })
+
         res.render("popular", {
-          popular: response.data.results
+          popular: data
         });
       })
       .catch(function (err) {

@@ -46,12 +46,7 @@
   border-radius: 10px;
   overflow: hidden;
   padding: 55px 55px 37px 55px;
-
-  background: #716c79;
-  background: -webkit-linear-gradient(top, #afb0d3, #265988);
-  background: -o-linear-gradient(top, #afb0d3, #265988);
-  background: -moz-linear-gradient(top, #afb0d3, #265988);
-  background: linear-gradient(top, #afb0d3, #265988);
+  background-image: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6));
 }
 
 /*------------------------------------------------------------------
@@ -103,14 +98,15 @@
 .input100 {
   font-family: Poppins-Regular;
   font-size: 16px;
-  color: rgb(52, 13, 141);
+  color: #fff;
   line-height: 1.2;
 
   display: block;
   width: 100%;
   height: 45px;
   background: transparent;
-  padding: 0 5px 0 38px;
+  padding: 0 5px 0 15px;
+  border: 2px solid #fff;
 }
 
 /*---------------------------------------------*/
@@ -124,7 +120,7 @@
   pointer-events: none;
 }
 
-.focus-input100::before {
+/* .focus-input100::before {
   content: "";
   display: block;
   position: absolute;
@@ -158,7 +154,7 @@
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
-}
+} */
 
 .input100:focus {
   padding-left: 5px;
@@ -265,7 +261,7 @@
 .login100-form-btn {
   font-family: Poppins-Medium;
   font-size: 16px;
-  color: #555555;
+  color: #000;
   line-height: 1.2;
 
   display: -webkit-box;
@@ -280,11 +276,6 @@
   height: 50px;
   border-radius: 25px;
 
-  background: #716c79;
-  background: -webkit-linear-gradient(bottom, #afb0d3, #494849);
-  background: -o-linear-gradient(bottom, #afb0d3, #494849);
-  background: -moz-linear-gradient(bottom, #afb0d3, #494849);
-  background: linear-gradient(bottom, #afb0d3, #494849);
   position: relative;
   z-index: 1;
 
@@ -292,33 +283,9 @@
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
-}
 
-.login100-form-btn::before {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  border-radius: 25px;
-  background-color: #fff;
-  top: 0;
-  left: 0;
-  opacity: 1;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-}
-
-.login100-form-btn:hover {
-  color: #fff;
-}
-
-.login100-form-btn:hover:before {
-  opacity: 0;
+  border: none;
+  cursor: pointer;
 }
 
 /*------------------------------------------------------------------

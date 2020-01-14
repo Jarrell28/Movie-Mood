@@ -19,7 +19,7 @@ html,body {
   font-size: 30px;
 }
 #indexjumbo {
-    background-image: url("https://images.pexels.com/photos/2507025/pexels-photo-2507025.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("https://images.pexels.com/photos/2507025/pexels-photo-2507025.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
     background-size: cover;
     background-attachment: fixed;
     background-position: auto,center top;
@@ -50,8 +50,8 @@ html,body {
 }
 #button {
   border-radius: 24px;
-  margin-left: 10%;
-  margin-top: 8%;
+  margin-left: 5%;
+  margin-top: 4%;
 }
 .btn {
   transition: 0.3s;
@@ -114,10 +114,11 @@ html,body {
   align-items: flex-start;
 }
 #mostpop {
-  background-image: url("https://images.unsplash.com/photo-1415025148099-17fe74102b28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60");
+  background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("https://images.unsplash.com/photo-1415025148099-17fe74102b28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=60");
   background-size: 100%;
   background-attachment: fixed;
   background-position: auto, center top;
+  padding-top: 90px;
 }
 #mostpop .h2 {
   color: white;
@@ -126,4 +127,79 @@ html,body {
 .favorite,
 .favorited {
   cursor: pointer;
+}
+
+.mood-btn {
+  color: #fff;
+  background: transparent;
+  border: 2px solid;
+  transition: all .5s;
+
+}
+
+.mood-btn:hover {
+  color: #000;
+  background: #fff;
+}
+
+.movie-detail-btn {
+  color: #000;
+  border: 2px solid #000;
+  background: transparent;
+  transition: all .5s;
+
+}
+
+.movie-detail-btn:hover {
+  color: #fff;
+  background: #000;
+}
+
+.card {
+  border: none;
+}
+
+.movie-info {
+  padding: 10px 0;
+  border-bottom: 1px solid lightgray;
+  margin: 0;
+}
+
+.modal-body p:nth-of-type(3){
+  border-top: 1px solid lightgray;
+  margin-top: 10px;
+}
+
+.movie-link {
+  color: #000;
+  text-decoration: underline;
+}
+
+.account-page {
+  background-image: linear-gradient(rgba(0,0,0, .9), rgba(0,0,0, .9));
+  min-height: 100vh;
+}
+
+.account-page h1 {
+  padding-top: 80px;
+}
+
+.account-page h1, h2, label, .noFavorites {
+  color: #fff;
+}
+
+.update-btn {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  transition: all .5s;
+}
+
+.update-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+.navbar-brand:hover {
+  color: #fff !important;
 }
