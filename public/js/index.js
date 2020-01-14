@@ -42,14 +42,12 @@ $(".card-layout").on("click", ".movie", function (e) {
         <img src="https://image.tmdb.org/t/p/original${data.backdrop_path}"/ class="d-block img-fluid">
         <p class="mt-2">${data.overview}</p>
 
-        <p><i class="far fa-heart h3 favorite" data-id="${data.id}"></i></p>
+        <p class="d-flex justify-content-between align-items-center"><a href="${data.homepage}" target="_blank" class="movie-link">Movie Homepage</a><i class="far fa-heart h3 favorite" data-id="${data.id}"></i></p>
 
-        <p class="my-2"><a href="${data.homepage}" target="_blank">Movie Homepage</a></p>
-
-        <p class="my-2">Released Date: ${data.release_date}</p>
-        <p class="my-2">Rating: ${data.vote_average}</p>
-        <p class="my-2">Minutes: ${data.runtime}</p>
-        <p class="my-2">Genres: ${genres.join()}</p>
+        <p class="movie-info">Released Date: ${data.release_date}</p>
+        <p class="movie-info">Rating: ${data.vote_average}/10</p>
+        <p class="movie-info">Minutes: ${data.runtime}</p>
+        <p class="movie-info">Genres: ${genres.join()}</p>
       `;
 
       $("#movie-modal .modal-body").html(movieHtml);
@@ -79,6 +77,7 @@ $(".card-layout").on("click", ".favorited", function () {
 
 $(".modal-body").on("click", ".favorite", function () {
   var id = $(this).data("id");
+  var parent = $(this).parent();
 
   $.ajax({
     type: "POST",
@@ -86,8 +85,8 @@ $(".modal-body").on("click", ".favorite", function () {
     data: { id },
     success: function (response) {
       if (response.success) {
-        $(this).removeClass("far");
-        $(this).addClass("fas");
+        parent.find(".favorite").remove();
+        parent.append(`<i class="fas fa-heart h3 favorited" data-id="${id}"></i>`)
         console.log(response.msg);
       } else {
         console.log(response.msg);
@@ -182,12 +181,16 @@ $(".mood-btn").on("click", function () {
       $(".card-layout").empty();
       data.results.forEach(function (result) {
 
+        var overview = result.overview.substring(0, 80) + "...";
+
+
         var moodHtml = `<div class="card">
       <img src="https://image.tmdb.org/t/p/original${result.backdrop_path}" class="card-img-top" alt="...">
       <div class="card-body">
           <h5 class="card-title">${result.title}</h5>
-          <p class="card-text">Rating: ${result.vote_average}</p>
-          <button class="btn btn-info movie" data-id=${result.id}>View Details</button>
+          <p class="card-text">${overview}</p>
+          <p class="card-text">Rating: ${result.vote_average}/10</p>
+          <button class="btn movie-detail-btn movie" data-id=${result.id}>View Details</button>
           </div>
       </div>`;
 

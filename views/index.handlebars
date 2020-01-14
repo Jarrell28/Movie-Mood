@@ -3,14 +3,14 @@
   <br>
   <div class="container">
 
-    <h1 class="display-4" id="slide">Movie Mood</h1>
+    <h1 class="display-4 mt-2" id="slide">Movie Mood</h1>
     <p class="lead">I'm in the mood for something...</p>
 
     {{#each moods}}
-    <button type="button" class="btn btn-info mood-btn" id="button">{{this.mood}}</button>
+    <button type="button" class="btn mood-btn" id="button">{{this.mood}}</button>
     {{/each}}
 
-    <div class="card-layout">
+    <div class="card-layout mt-4">
 
     </div>
 
@@ -31,17 +31,8 @@
           <div class="modal-body">
             <p>Modal body text goes here.</p>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
         </div>
       </div>
     </div>
-
-    {{!-- <button type="button" class="btn btn-info" id="button">Funny</button> --}}
-    {{!-- <button type="button" class="btn btn-info" id="button">Romantic</button> --}}
-    {{!-- <button type="button" class="btn btn-info" id="button">Uplifting</button> --}}
-    {{!-- <button type="button" class="btn btn-info" id="button">Dark</button> --}}
-    {{!-- <button type="button" class="btn btn-info" id="button">Info</button> --}}
   </div>
 </div>

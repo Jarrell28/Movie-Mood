@@ -11,8 +11,9 @@
                 <img src="https://image.tmdb.org/t/p/original{{this.backdrop_path}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
-                    <p class="card-text">Rating: {{this.vote_average}}</p>
-                    <button class="btn btn-info movie" data-id={{this.id}}>View Details</button>
+                    <p class="card-text">{{this.trimmedOverview}}</p>
+                    <p class="card-text">Rating: {{this.vote_average}}/10</p>
+                    <button class="btn movie-detail-btn movie" data-id={{this.id}}>View Details</button>
                 </div>
             </div>
 
@@ -36,16 +37,8 @@
                     <div class="modal-body">
                         <p>Modal body text goes here.</p>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
                 </div>
             </div>
         </div>
-
-
-
-
-
     </div>
 </div>

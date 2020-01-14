@@ -1,79 +1,81 @@
-<div class="container">
-    <h1 class="h2 mt-4">Account Details</h1>
+<div class="account-page">
 
-    <form id="accountForm">
+    <div class="container">
+        <h1 class="h2">Account Details</h1>
 
-        <div class="form-group">
-            <label for="accountUsername">Username</label>
-            <input type="text" class="form-control" id="accountUsername" aria-describedby="usernameHelp"
-                value={{user.username}}>
-        </div>
+        <form id="accountForm">
 
-        <div class="form-group">
-            <label for="accountEmail">Email address</label>
-            <input type="email" class="form-control" id="accountEmail" aria-describedby="emailHelp"
-                value={{user.email}}>
-        </div>
-        <div class="form-group">
-            <label for="accountPassword">Password</label>
-            <input type="password" class="form-control" id="accountPassword" value="{{user.password}}">
-        </div>
-        <button type="submit" class="btn btn-info">Update</button>
-
-    </form>
-
-    <h2 class="mt-5">Favorites</h2>
-
-    {{noFavorites.msg}}
-
-    <div class="card-layout">
-
-        {{#each favorites}}
-
-        <div class="card">
-            <img src="https://image.tmdb.org/t/p/original{{this.backdrop_path}}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{this.original_title}}</h5>
-                <p class="card-text">Rating: {{this.vote_average}}</p>
-                {{!-- <button class="btn btn-info" data-id={{this.id}}>View Details</button> --}}
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#{{this.imdb_id}}"
-                    id="movie-modal-btn">
-                    View Details
-                </button>
+            <div class="form-group">
+                <label for="accountUsername">Username</label>
+                <input type="text" class="form-control" id="accountUsername" aria-describedby="usernameHelp"
+                    value={{user.username}}>
             </div>
-        </div>
 
-        <div class="modal fade" tabindex="-1" role="dialog" id="{{this.imdb_id}}">
-            <div class="modal-dialog" role="document" style="max-width: 700px;">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">{{this.original_title}}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="https://image.tmdb.org/t/p/original{{this.backdrop_path}}"/ class="d-block img-fluid">
-                        <p class="mt-2">{{this.overview}}</p>
+            <div class="form-group">
+                <label for="accountEmail">Email address</label>
+                <input type="email" class="form-control" id="accountEmail" aria-describedby="emailHelp"
+                    value={{user.email}}>
+            </div>
+            <div class="form-group">
+                <label for="accountPassword">Password</label>
+                <input type="password" class="form-control" id="accountPassword" value="{{user.password}}">
+            </div>
+            <button type="submit" class="btn update-btn">Update</button>
 
-                        <p><i class="fas fa-heart h3 favorited" data-id="{{this.id}}"></i></p>
+        </form>
 
-                        <p class="my-2"><a href="{{this.homepage}}" target="_blank">Movie Homepage</a></p>
+        <h2 class="mt-5">Favorites</h2>
 
-                        <p class="my-2">Released Date: {{this.release_date}}</p>
-                        <p class="my-2">Rating: {{this.vote_average}}</p>
-                        <p class="my-2">Minutes: {{this.runtime}}</p>
-                        {{!-- <p class="my-2">Genres: {{genres.join()}}</p> --}}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <p class="noFavorites">{{noFavorites.msg}}</p>
+
+        <div class="card-layout">
+
+            {{#each favorites}}
+
+            <div class="card">
+                <img src="https://image.tmdb.org/t/p/original{{this.backdrop_path}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.original_title}}</h5>
+                    <p class="card-text">{{this.trimmedOverview}}</p>
+                    <p class="card-text">Rating: {{this.vote_average}}/10</p>
+                    {{!-- <button class="btn btn-info" data-id={{this.id}}>View Details</button> --}}
+                    <button type="button" class="btn movie-detail-btn" data-toggle="modal"
+                        data-target="#{{this.imdb_id}}" id="movie-modal-btn">
+                        View Details
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal fade" tabindex="-1" role="dialog" id="{{this.imdb_id}}">
+                <div class="modal-dialog" role="document" style="max-width: 700px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">{{this.original_title}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="https://image.tmdb.org/t/p/original{{this.backdrop_path}}"/
+                                class="d-block img-fluid">
+                            <p class="mt-2">{{this.overview}}</p>
+
+                            <p class="d-flex justify-content-between align-items-center"><a href="{{this.homepage}}"
+                                    target="_blank" class="movie-link">Movie Homepage</a><i
+                                    class="fas fa-heart h3 favorited" data-id="{{this.id}}"></i></p>
+                            <p class="movie-info">Released Date: {{this.release_date}}</p>
+                            <p class="movie-info">Rating: {{this.vote_average}}</p>
+                            <p class="movie-info">Minutes: {{this.runtime}}</p>
+                        </div>
+
                     </div>
                 </div>
             </div>
+
+            {{/each}}
         </div>
 
-        {{/each}}
-    </div>
 
+    </div>
 
 </div>
