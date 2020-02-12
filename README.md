@@ -7,8 +7,13 @@ Movie Mood is a movie suggestion app that users can use to find movies to watch 
 # Technologies Used 
 
 -HTML, CSS, Javascript, Bootstrap
+
 -Node.js, Express.js, Express-session
+
 -MySQL, Sequelize
+
 -Heroku
+
 -Axios 
+
 -Handlebars 
